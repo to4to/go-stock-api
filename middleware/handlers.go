@@ -57,6 +57,14 @@ func getStock(id int) (model.Stock, error) {
 
 	row:=db.QueryRow(sqlStmt,id)
 
+	err:=row.Scan(&stock.Id,&stock.Company,&stock.Name,&stock.Price)
+
+	switch err{
+
+
+		
+	}
+
 
 
 }

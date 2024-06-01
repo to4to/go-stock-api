@@ -18,7 +18,6 @@ type response struct {
 	Message string `json:"message,omitempty"`
 }
 
-
 func createConnection() *sql.DB {
 
 	err := godotenv.Load()
@@ -47,28 +46,24 @@ func createConnection() *sql.DB {
 
 }
 
+func CreateStock(w http.ResponseWriter, r *http.Request) {
 
-func CreateStock(w http.ResponseWriter,r *http.Request) {
+	var stock model.Stock
 
-var stock model.Stock
+	err := json.NewDecoder(r.Body).Decode(&stock)
+	if err != nil {
+		log.Fatal("Unable To Decode")
+	}
 
-err:=json.NewDecoder(r.Body).Decode(&stock)
-if err!=nil{
-	log.Fatal("Unable To Decode")
+	insertID := insertStock(stock)
+
+	res := response{
+		ID:      insertID,
+		Message: "Stock Created Successfully",
+	}
+
+	json.NewEncoder(w).Encode(res)
 }
-
-
-insertID:=insertStock(stock)
-
-res:=response{
-	ID: insertID,
-	Message: "Stock Created Successfully",
-}
-
-
-json.NewEncoder(w).Encode(res)
-}
-
 
 func GetStock() {
 
@@ -84,18 +79,24 @@ func getStock(id int) (model.Stock, error) {
 	defer db.Close()
 
 	var stock model.Stock
-	sqlStmt:=`SELECT * FROM stocks WHERE stockid=$1`
+	sqlStmt := `SELECT * FROM stocks WHERE stockid=$1`
 
-	row:=db.QueryRow(sqlStmt,id)
+	row := db.QueryRow(sqlStmt, id)
 
-	err:=row.Scan(&stock.Id,&stock.Company,&stock.Name,&stock.Price)
+	err := row.Scan(&stock.Id, &stock.Company, &stock.Name, &stock.Price)
 
-	switch err{
+	switch err {
 
-
-		
 	}
 
+}
 
 
+func insertStock(stock model.Stock)(int64){
+
+
+
+
+
+	
 }

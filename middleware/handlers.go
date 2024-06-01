@@ -13,6 +13,12 @@ import (
 	"github.com/to4to/go-stock-api/model"
 )
 
+type response struct {
+	ID      int64  `json:"id,omitempty"`
+	Message string `json:"message,omitempty"`
+}
+
+
 func createConnection() *sql.DB {
 
 	err := godotenv.Load()
@@ -52,7 +58,15 @@ if err!=nil{
 }
 
 
+insertID:=insertStock(stock)
 
+res:=response{
+	ID: insertID,
+	Message: "Stock Created Successfully",
+}
+
+
+json.NewEncoder(w).Encode(res)
 }
 
 

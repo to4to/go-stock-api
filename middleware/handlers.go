@@ -2,8 +2,10 @@ package middleware
 
 import (
 	"database/sql"
+	"encoding/json"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -38,6 +40,21 @@ func createConnection() *sql.DB {
 	return db
 
 }
+
+
+func CreateStock(w http.ResponseWriter,r *http.Request) {
+
+var stock model.Stock
+
+err:=json.NewDecoder(r.Body).Decode(&stock)
+if err!=nil{
+	log.Fatal("Unable To Decode")
+}
+
+
+
+}
+
 
 func GetStock() {
 

@@ -69,6 +69,17 @@ func GetStock() {
 
 }
 
+func GetAllStock(w http.ResponseWriter,r *http.Request) {
+
+stocks,err:=getAllStock();
+if err!=nil{
+	log.Fatal("Unable To Get Stocks")
+}
+json.NewEncoder(w).Encode(stocks)
+
+
+}
+
 ///////////////////////////////////////
 ////////Handlers
 //////////////////////////////////////
@@ -91,12 +102,6 @@ func getStock(id int) (model.Stock, error) {
 
 }
 
+func insertStock(stock model.Stock) int64 {
 
-func insertStock(stock model.Stock)(int64){
-
-
-
-
-
-	
 }

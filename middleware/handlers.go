@@ -65,7 +65,8 @@ func CreateStock(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(res)
 }
 
-func GetStock() {
+func GetStock(w http.ResponseWriter,r *http.Request) {
+	
 
 }
 

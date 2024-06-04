@@ -105,3 +105,5 @@ func getStock(id int) (model.Stock, error) {
 func insertStock(stock model.Stock) int64 {
 
 }
+
+func getAllStock(){}

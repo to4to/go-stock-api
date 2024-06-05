@@ -75,6 +75,9 @@ func GetStock(w http.ResponseWriter, r *http.Request) {
 	if err!= nil{
 		log.Fatalf("Unable to convert the string into int.  %v", err)
 	}
+
+
+	stock,err:=getStock(int64(id))
 }
 
 func GetAllStock(w http.ResponseWriter, r *http.Request) {

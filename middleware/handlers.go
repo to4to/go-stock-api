@@ -7,7 +7,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 
+	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
 	_ "github.com/lib/pq"
 	"github.com/to4to/go-stock-api/model"
@@ -65,19 +67,23 @@ func CreateStock(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(res)
 }
 
-func GetStock(w http.ResponseWriter,r *http.Request) {
-	
+func GetStock(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
 
+	id, err := strconv.Atoi(params["id"])
+
+	if err!= nil{
+		log.Fatalf("Unable to convert the string into int.  %v", err)
+	}
 }
 
-func GetAllStock(w http.ResponseWriter,r *http.Request) {
+func GetAllStock(w http.ResponseWriter, r *http.Request) {
 
-stocks,err:=getAllStock();
-if err!=nil{
-	log.Fatal("Unable To Get Stocks")
-}
-json.NewEncoder(w).Encode(stocks)
-
+	stocks, err := getAllStock()
+	if err != nil {
+		log.Fatal("Unable To Get Stocks")
+	}
+	json.NewEncoder(w).Encode(stocks)
 
 }
 
@@ -107,4 +113,4 @@ func insertStock(stock model.Stock) int64 {
 
 }
 
-func getAllStock(){}
+func getAllStock() {}

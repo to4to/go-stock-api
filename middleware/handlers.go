@@ -77,7 +77,7 @@ func GetStock(w http.ResponseWriter, r *http.Request) {
 	}
 
 	stock, err := getStock(int64(id))
-	if err!=nil{
+	if err != nil {
 
 		log.Fatalf("Unable to get stock. %v", err)
 	}
@@ -92,6 +92,14 @@ func GetAllStock(w http.ResponseWriter, r *http.Request) {
 		log.Fatal("Unable To Get Stocks")
 	}
 	json.NewEncoder(w).Encode(stocks)
+
+}
+
+func UpdateStock(w http.ResponseWriter, r *http.Request) {
+
+}
+
+func DeleteStock(w http.ResponseWriter, r *http.Request) {
 
 }
 

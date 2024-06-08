@@ -77,6 +77,12 @@ func GetStock(w http.ResponseWriter, r *http.Request) {
 	}
 
 	stock, err := getStock(int64(id))
+	if err!=nil{
+
+		log.Fatalf("Unable to get stock. %v", err)
+	}
+
+	json.NewEncoder(w).Encode(stock)
 }
 
 func GetAllStock(w http.ResponseWriter, r *http.Request) {
@@ -93,7 +99,7 @@ func GetAllStock(w http.ResponseWriter, r *http.Request) {
 ////////Handlers
 //////////////////////////////////////
 
-func getStock(id int) (model.Stock, error) {
+func getStock(id int64) (model.Stock, error) {
 	db := createConnection()
 
 	defer db.Close()

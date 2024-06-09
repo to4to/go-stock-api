@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"os"
 	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
 	"github.com/joho/godotenv"
@@ -97,6 +98,18 @@ func GetAllStock(w http.ResponseWriter, r *http.Request) {
 
 func UpdateStock(w http.ResponseWriter, r *http.Request) {
 
+	params:=mux.Vars(r)
+
+	id,err:= strconv.Atoi(params["id"])
+
+
+
+	if err != nil{
+		log.Fatalf("Unable to convert the string into int.  %v", err)
+	}
+
+
+	
 }
 
 func DeleteStock(w http.ResponseWriter, r *http.Request) {
@@ -129,4 +142,7 @@ func insertStock(stock model.Stock) int64 {
 
 }
 
-func getAllStock() {}
+func getAllStock() {
+
+}
+

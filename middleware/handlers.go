@@ -105,14 +105,19 @@ func UpdateStock(w http.ResponseWriter, r *http.Request) {
 		log.Fatalf("Unable to convert the string into int.  %v", err)
 	}
 
-
 	var stock model.Stock
 
-	err=json.NewDecoder(r.Body).Decode(&stock)
+	err = json.NewDecoder(r.Body).Decode(&stock)
 
 }
 
 func DeleteStock(w http.ResponseWriter, r *http.Request) {
+
+	params := mux.Vars(r)
+	id, err := strconv.Atoi(params["id"])
+	if err != nil {
+		log.Fatalf("Unable to convert the string into int.  %v", err)
+	}
 
 }
 

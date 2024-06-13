@@ -116,7 +116,7 @@ func DeleteStock(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
-		log.Fatalf("Unable to convert the string into int.  %v", err)
+		log.Fatalf("Unable to convert the string into int.  %v", err)˳
 	}
 
 }
@@ -144,6 +144,12 @@ func getStock(id int64) (model.Stock, error) {
 }
 
 func insertStock(stock model.Stock) int64 {
+
+
+	db:=createConnection()
+	defer db.Close()
+	sqlStatement := `INSERT INTO stocks (name, price, company) VALUES ($1, $2, $3) RETURNING stockid`
+	
 
 }
 

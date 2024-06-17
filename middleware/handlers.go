@@ -149,6 +149,7 @@ func insertStock(stock model.Stock) int64 {
 	db:=createConnection()
 	defer db.Close()
 	sqlStatement := `INSERT INTO stocks (name, price, company) VALUES ($1, $2, $3) RETURNING stockid`
+	var id int
 	
 
 }

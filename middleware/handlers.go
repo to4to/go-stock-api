@@ -135,9 +135,22 @@ func DeleteStock(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
-		log.Fatalf("Unable to convert the string into int.  %v", err)˳
+		log.Fatalf("Unable to convert the string into int.  %v", err)
 	}
 
+	deletedRows := deleteStock(int64(id))
+
+	// format the message string
+	msg := fmt.Sprintf("Stock updated successfully. Total rows/record affected %v", deletedRows)
+
+	// format the reponse message
+	res := response{
+		ID:      int64(id),
+		Message: msg,
+	}
+
+	// send the response
+	json.NewEncoder(w).Encode(res)
 }
 
 ///////////////////////////////////////

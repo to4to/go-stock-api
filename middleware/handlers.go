@@ -113,13 +113,10 @@ func UpdateStock(w http.ResponseWriter, r *http.Request) {
 		log.Fatalf("Unable to decode the request body.  %v", err)
 	}
 
-	
 	updatedRows := updateStock(int64(id), stock)
 
-	
 	msg := fmt.Sprintf("Stock updated successfully. Total rows/record affected %v", updatedRows)
 
-	
 	res := response{
 		ID:      int64(id),
 		Message: msg,
@@ -177,12 +174,10 @@ func getStock(id int64) (model.Stock, error) {
 
 func insertStock(stock model.Stock) int64 {
 
-
-	db:=createConnection()
+	db := createConnection()
 	defer db.Close()
 	sqlStatement := `INSERT INTO stocks (name, price, company) VALUES ($1, $2, $3) RETURNING stockid`
 	var id int
-	
 
 }
 

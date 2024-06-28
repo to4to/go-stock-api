@@ -182,6 +182,7 @@ func insertStock(stock model.Stock) int64 {
 }
 
 func getAllStock() {
+	db := createConnection()
 
 }
 

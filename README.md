@@ -11,8 +11,6 @@ The Stock API is a RESTful service built using Go (Golang) that provides stock m
 - Search for stock information by ticker symbol
 - Basic in-memory storage (suitable for demonstration purposes)
 
-## Getting Started
-
 ### Prerequisites
 
 - Go (1.18 or newer) installed on your machine
@@ -24,3 +22,7 @@ The Stock API is a RESTful service built using Go (Golang) that provides stock m
 
    ```sh
    git clone https://github.com/yourusername/stock-api.git
+
+
+## Getting Started
+ - go run main.go

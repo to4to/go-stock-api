@@ -2,18 +2,18 @@
 
 ## Overview
 
-The Stock API is a RESTful service built using Go (Golang) that provides stock market data. It allows users to query stock prices, get historical data, and access other stock-related information. This API is designed to be lightweight and efficient for handling stock market queries.
+The Stock API is a RESTful service built using Go (Golang) that provides stock data. It allows users to query stock prices,and access other stock-related information. This API is designed to be lightweight and efficient for handling stock market queries.
 
 ## Features
 
-- Retrieve current stock prices
-- Fetch historical stock data
+- Retrieve stock prices
+- Fetch  stock data
 - Search for stock information by ticker symbol
-- Basic in-memory storage (suitable for demonstration purposes)
+- Delete the Desired Data.
 
 ### Prerequisites
 
-- Go (1.18 or newer) installed on your machine
+- Go (1.20 or newer) installed on your machine
 - Basic knowledge of Go and RESTful APIs
 
 ### Installation
